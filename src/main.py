@@ -32,6 +32,21 @@ def handle_internal_error(request: Request, exc: sqlalchemy.exc.InternalError):
         content={"detail": "An internal database error occurred."}
     )
 
+@app.exception_handler(IntegrityError)
+def handle_integrity_error(request: Request, exc: IntegrityError):
+    if "foreign key constraint" in str(exc.orig).lower():
+        return JSONResponse(
+            status_code=404,
+            content={
+                "detail": "The provided ID (institution_id, batch_id, or session_id) does not exist in the database.",
+                "error_code": "RESOURCE_NOT_FOUND"
+            }
+        )
+    return JSONResponse(
+        status_code=400,
+        content={"detail": "A database integrity error occurred."}
+    )
+
 # ── Routers ─────────────────────────────────────────────────────────────────
 app.include_router(auth.router)
 app.include_router(batches.router)
