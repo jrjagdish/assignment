@@ -18,6 +18,10 @@ def signup(payload: SignupRequest, db: Session = Depends(get_db)):
     existing = db.query(User).filter(User.email == payload.email).first()
     if existing:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email already registered")
+    
+    cleaned_institution_id = payload.institution_id
+    if cleaned_institution_id is not None and cleaned_institution_id <= 0:
+        cleaned_institution_id = None
 
     user = User(
         name=payload.name,
