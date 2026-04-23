@@ -1,0 +1,6 @@
+Full Name: [Your Full Name]
+Email: [your.email@example.com]
+Phone: [+91-XXXXXXXXXX]
+GitHub: https://github.com/[your-username]
+
+Most Challenging Part: Implementing the dual-token authentication flow for the Monitoring Officer role — specifically ensuring the scoped monitoring token is validated independently of the standard JWT while keeping the middleware clean and composable.
