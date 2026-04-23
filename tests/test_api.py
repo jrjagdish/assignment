@@ -171,6 +171,7 @@ def test_student_marks_attendance_real_db(real_client: TestClient):
     student_id = int(s_payload["sub"])
 
     db.add(BatchTrainer(batch_id=batch.id, trainer_id=trainer_id))
+    batch_id = batch.id
     db.add(BatchStudent(batch_id=batch.id, student_id=student_id))
     db.commit()
     db.close()
@@ -181,7 +182,7 @@ def test_student_marks_attendance_real_db(real_client: TestClient):
         "date": "2024-10-01",
         "start_time": "10:00:00",
         "end_time": "12:00:00",
-        "batch_id": batch.id,
+        "batch_id": batch_id,
     }, headers=t_headers)
     assert sess_res.status_code == 201, sess_res.text
     session_id = sess_res.json()["id"]
