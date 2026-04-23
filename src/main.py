@@ -25,6 +25,6 @@ app.include_router(monitoring.router)
 
 
 # ── Health check ─────────────────────────────────────────────────────────────
-@app.get("/health", tags=["meta"])
+@app.get("/", tags=["meta"])
 def health():
     return {"status": "ok", "service": "SkillBridge API"}
