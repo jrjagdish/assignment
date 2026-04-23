@@ -7,7 +7,7 @@ A fully role-based REST API for the **SkillBridge** state-level skilling program
 ## 1. Live API Base URL
 
 ```
-https://skillbridge-api.onrender.com
+https://assignment-1-x018.onrender.com
 ```
 
 > **Note:** Render free tier spins down after inactivity — the first request may take 30–60 s to cold-start.
@@ -15,7 +15,7 @@ https://skillbridge-api.onrender.com
 ### Working curl against live deployment
 
 ```bash
-curl -s -X POST https://skillbridge-api.onrender.com/auth/login \
+curl -s -X POST https://assignment-1-x018.onrender.com/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"student01@skillbridge.dev","password":"student@1234"}' | python -m json.tool
 ```
@@ -26,7 +26,7 @@ curl -s -X POST https://skillbridge-api.onrender.com/auth/login \
 
 ```bash
 # 1. Clone and enter the project
-git clone <your-repo-url>
+git clone https://github.com/jrjagdish/assignment.git
 cd assignment
 
 # 2. Create and activate a virtual environment
